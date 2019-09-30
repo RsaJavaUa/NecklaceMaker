@@ -20,14 +20,14 @@ public class StoneCreator {
 
     private Stone createDefaultStone (int stoneType) {
         switch (stoneType) {
-            case 0:
-                return new Diamond();
             case 1:
-                return new Amethist();
+                return new Diamond();
             case 2:
+                return new Amethist();
+            case 3:
                 return new Opal();
         }
-        throw  new IllegalArgumentException("should be 0 - 2");
+        throw  new IllegalArgumentException("should be 1 - 3");
     }
 
     private void setRandomSizeAndTransparency() {
