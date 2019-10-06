@@ -1,7 +1,7 @@
 package withlogic;
 
 import objects.pojo.Stone;
-import objects.withlogic.NeckLace;
+import objects.withlogic.NeckLaceOperator;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,16 +12,16 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class NeckLaceTest {
+public class NeckLaceOperatorTest {
 
-    private NeckLace neckLace;
+    private NeckLaceOperator neckLace;
     private List<Stone> stoneList;
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Before
     public void setUp() {
-        neckLace = new NeckLace();
+        neckLace = new NeckLaceOperator();
         neckLace.addStonesToNeckclace(0, 1);
         neckLace.addStonesToNeckclace(2, 1);
         stoneList = neckLace.getStones();
@@ -56,6 +56,7 @@ public class NeckLaceTest {
     public void calculateSize() {
         int size = stoneList.stream().mapToInt(Stone::getSize).sum();
         assertEquals(size, neckLace.calculateSize());
+        
     }
 
     @Test

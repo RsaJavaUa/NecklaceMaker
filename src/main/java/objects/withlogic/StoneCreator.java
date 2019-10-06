@@ -5,29 +5,32 @@ import objects.pojo.Amethist;
 import objects.pojo.Diamond;
 import objects.pojo.Opal;
 import objects.pojo.Stone;
+import org.apache.log4j.Logger;
 
 import java.util.Random;
 
 public class StoneCreator {
-    private  Stone stone;
+    private static final Logger LOGGER = Logger.getLogger(StoneCreator.class);
+    private Stone stone;
 
-    public Stone createStone(int stoneType){
+    public Stone createStone(int stoneType) {
         stone = createDefaultStone(stoneType);
         setRandomSizeAndTransparency();
         estimatePrice();
         return stone;
     }
 
-    private Stone createDefaultStone (int stoneType) {
+    private Stone createDefaultStone(int stoneType) {
         switch (stoneType) {
-            case 1:
+            case 0:
                 return new Diamond();
-            case 2:
+            case 1:
                 return new Amethist();
-            case 3:
+            case 2:
                 return new Opal();
         }
-        throw  new IllegalArgumentException("should be 1 - 3");
+        LOGGER.error("incorrect input range, should be 0-2");
+        throw new IllegalArgumentException("should be 0 - 2");
     }
 
     private void setRandomSizeAndTransparency() {

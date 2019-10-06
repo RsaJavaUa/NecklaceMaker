@@ -1,16 +1,20 @@
 package services.necklacemaker;
 
-import objects.withlogic.NeckLace;
+import objects.withlogic.NeckLaceOperator;
+import org.apache.log4j.Logger;
 import services.UserInputService;
 
 public class ConsoleNecklaceMaker extends NecklaceMaker {
-    private NeckLace neckLace = new NeckLace();
+    private final static Logger LOGGER = Logger.getLogger(ConsoleNecklaceMaker.class);
+
+    private NeckLaceOperator neckLace = new NeckLaceOperator();
     private UserInputService inputService = new UserInputService();
 
-    public NeckLace createNecklace() {
+    public NeckLaceOperator createNecklace() {
         while (true) {
             int userInputStone = inputService.userInputStoneType();
             if (userInputStone == 4) {
+                LOGGER.info("End of process of creating necklace...Bye");
                 System.out.println("End of process of creating necklace...Bye");
                 break;
             }

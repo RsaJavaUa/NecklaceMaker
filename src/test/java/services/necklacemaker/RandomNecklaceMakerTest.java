@@ -1,6 +1,6 @@
 package services.necklacemaker;
 
-import objects.withlogic.NeckLace;
+import objects.withlogic.NeckLaceOperator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 public class RandomNecklaceMakerTest {
     private RandomNecklaceMaker maker = new RandomNecklaceMaker();
-    private NeckLace neckLace;
+    private NeckLaceOperator neckLace;
 
     @Before
     public void setUp() {

@@ -82,7 +82,7 @@ public class UserInputService {
     private double[] userInputIntoArray(int firstNumber, int secondNumber) {
         int temp;
         if (firstNumber < secondNumber) {
-            return new double[]{(Math.round(firstNumber) / 100.0), (Math.round(firstNumber) / 100.0)};
+            return new double[]{(Math.round(firstNumber) / 100.0), (Math.round(secondNumber) / 100.0)};
         } else {
             temp = firstNumber;
             firstNumber = secondNumber;

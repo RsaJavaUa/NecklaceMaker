@@ -1,6 +1,7 @@
 package objects.withlogic;
 
 import objects.pojo.Stone;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,7 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class NeckLace {
+public class NeckLaceOperator {
+    private final static Logger LOGGER = Logger.getLogger(NeckLaceOperator.class);
+
     private List<Stone> necklace = new ArrayList<>();
     private StoneCreator stoneCreator = new StoneCreator();
     private Comparator<Stone> comparator = Comparator.comparing(Stone::getPrice);
@@ -19,11 +22,15 @@ public class NeckLace {
         }
         System.out.println("You have added " + quantity + " "
                 + necklace.get(necklace.size() - 1).getClass().getSimpleName() + " to you necklace");
+        LOGGER.info("You have added " + quantity + " "
+                + necklace.get(necklace.size() - 1).getClass().getSimpleName() + " to you necklace");
     }
 
     public void showNecklace() {
         System.out.println("You have next stones in you necklace:");
         necklace.forEach(System.out::println);
+        LOGGER.info("You have next stones in you necklace:");
+        necklace.forEach(LOGGER::info);
     }
 
     public void sortStonesByPrice() {

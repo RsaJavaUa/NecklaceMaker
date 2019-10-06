@@ -1,7 +1,7 @@
 package services.necklacemaker;
 
-import objects.withlogic.NeckLace;
+import objects.withlogic.NeckLaceOperator;
 
-public  abstract class NecklaceMaker {
-    public abstract NeckLace createNecklace();
+public abstract class NecklaceMaker {
+    public abstract NeckLaceOperator createNecklace();
 }
