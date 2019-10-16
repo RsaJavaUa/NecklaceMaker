@@ -1,66 +1,76 @@
 package objects.withlogic;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import objects.pojo.Necklace;
 import objects.pojo.Stone;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@NoArgsConstructor
 public class NeckLaceOperator {
     private final static Logger LOGGER = Logger.getLogger(NeckLaceOperator.class);
 
-    private List<Stone> necklace = new ArrayList<>();
+    public NeckLaceOperator(Necklace necklace) {
+        this.necklace = necklace;
+    }
+
+    @Getter
+    @Setter
+    private Necklace necklace = new Necklace();
     private StoneCreator stoneCreator = new StoneCreator();
     private Comparator<Stone> comparator = Comparator.comparing(Stone::getPrice);
 
     public void addStonesToNeckclace(int type, int quantity) {
         for (int i = 0; i < quantity; i++) {
-            necklace.add(stoneCreator.createStone(type));
+            necklace.getStones().add(stoneCreator.createStone(type));
         }
         System.out.println("You have added " + quantity + " "
-                + necklace.get(necklace.size() - 1).getClass().getSimpleName() + " to you necklace");
+                + getStonesList().get(getStonesList().size() - 1).getClass().getSimpleName() + " to you necklace");
         LOGGER.info("You have added " + quantity + " "
-                + necklace.get(necklace.size() - 1).getClass().getSimpleName() + " to you necklace");
+                + getStonesList().get(getStonesList().size() - 1).getClass().getSimpleName() + " to you necklace");
     }
 
     public void showNecklace() {
         System.out.println("You have next stones in you necklace:");
-        necklace.forEach(System.out::println);
+        getStonesList().forEach(System.out::println);
         LOGGER.info("You have next stones in you necklace:");
-        necklace.forEach(LOGGER::info);
+        getStonesList().forEach(LOGGER::info);
     }
 
     public void sortStonesByPrice() {
-        necklace.sort(comparator);
+        getStonesList().sort(comparator);
     }
 
     public int calculatePrice() {
-        return necklace.stream().mapToInt(Stone::getPrice).sum();
+        return getStonesList().stream().mapToInt(Stone::getPrice).sum();
     }
 
     public int calculateSize() {
-        return necklace.stream().mapToInt(Stone::getSize).sum();
+        return getStonesList().stream().mapToInt(Stone::getSize).sum();
     }
 
     public List<Stone> filterByTransparencyRange(double bottomLimit, double upperLimit) {
-        return necklace.stream()
+        return getStonesList().stream()
                 .filter(stone -> stone.getTransparency() > bottomLimit)
                 .filter(stone -> stone.getTransparency() < upperLimit)
                 .collect(Collectors.toList());
     }
 
     public int getNumersOfStones(){
-        return necklace.size();
+        return getStonesList().size();
     }
 
     public void removeAllStones(){
-        necklace.removeAll(necklace);
+        getStonesList().removeAll(getStonesList());
     }
 
-    public List <Stone> getStones(){
-        return necklace;
+    private List<Stone> getStonesList(){
+        return necklace.getStones();
+
     }
 }

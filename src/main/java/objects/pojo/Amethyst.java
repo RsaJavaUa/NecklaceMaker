@@ -2,15 +2,15 @@ package objects.pojo;
 
 import objects.enums.StoneType;
 
-public class Amethist extends Stone {
-    public Amethist() {
+public class Amethyst extends Stone {
+    public Amethyst() {
         setType(StoneType.PRECIOUS);
         setPrice(150);
     }
 
     @Override
     public String toString() {
-        return "Amethist{" +
+        return "Amethyst{" +
                 "size=" + getSize() +
                 ", transparency=" + getTransparency() +
                 ", price=" + getPrice() +

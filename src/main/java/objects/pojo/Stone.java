@@ -6,7 +6,7 @@ import objects.enums.StoneType;
 
 @Getter
 @Setter
-public abstract class Stone implements Comparable<Stone> {
+public abstract class Stone extends BaseEntity implements Comparable<Stone> {
     private Integer size;
     private Double transparency;
     private StoneType type;

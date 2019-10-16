@@ -1,7 +1,7 @@
 package objects.withlogic;
 
 import objects.enums.StoneType;
-import objects.pojo.Amethist;
+import objects.pojo.Amethyst;
 import objects.pojo.Diamond;
 import objects.pojo.Opal;
 import objects.pojo.Stone;
@@ -25,7 +25,7 @@ public class StoneCreator {
             case 0:
                 return new Diamond();
             case 1:
-                return new Amethist();
+                return new Amethyst();
             case 2:
                 return new Opal();
         }
