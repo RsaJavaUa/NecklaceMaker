@@ -11,19 +11,23 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
+
 public class NeckLaceOperator {
     private final static Logger LOGGER = Logger.getLogger(NeckLaceOperator.class);
+
+    @Getter
+    @Setter
+    private Necklace necklace;
+    private StoneCreator stoneCreator = new StoneCreator();
+    private Comparator<Stone> comparator = Comparator.comparing(Stone::getPrice);
 
     public NeckLaceOperator(Necklace necklace) {
         this.necklace = necklace;
     }
 
-    @Getter
-    @Setter
-    private Necklace necklace = new Necklace();
-    private StoneCreator stoneCreator = new StoneCreator();
-    private Comparator<Stone> comparator = Comparator.comparing(Stone::getPrice);
+    public NeckLaceOperator() {
+        necklace = new Necklace();
+    }
 
     public void addStonesToNeckclace(int type, int quantity) {
         for (int i = 0; i < quantity; i++) {
