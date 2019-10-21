@@ -1,4 +1,4 @@
-package objects.pojo;
+package objects.entities;
 
 import objects.enums.StoneType;
 

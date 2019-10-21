@@ -2,8 +2,8 @@ package objects.withlogic;
 
 import lombok.Getter;
 import lombok.Setter;
-import objects.pojo.Necklace;
-import objects.pojo.Stone;
+import objects.entities.Necklace;
+import objects.entities.Stone;
 import org.apache.log4j.Logger;
 
 import java.util.Comparator;

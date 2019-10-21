@@ -1,10 +1,10 @@
 package objects.withlogic;
 
 import objects.enums.StoneType;
-import objects.pojo.Amethyst;
-import objects.pojo.Diamond;
-import objects.pojo.Opal;
-import objects.pojo.Stone;
+import objects.entities.Amethyst;
+import objects.entities.Diamond;
+import objects.entities.Opal;
+import objects.entities.Stone;
 import org.apache.log4j.Logger;
 
 import java.util.Random;
