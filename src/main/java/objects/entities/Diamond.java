@@ -1,8 +1,11 @@
 package objects.entities;
 
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 import objects.enums.StoneType;
 
-
+@EqualsAndHashCode
+@Accessors(chain = true)
 public class Diamond extends Stone {
     public Diamond() {
         setType(StoneType.PRECIOUS);

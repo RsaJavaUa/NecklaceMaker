@@ -1,15 +1,14 @@
 package objects.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import objects.enums.StoneType;
-
 
 @Getter
 @Setter
-
+@Accessors(chain = true)
 @NoArgsConstructor
 public abstract class Stone extends BaseEntity implements Comparable<Stone> {
     private Integer size;

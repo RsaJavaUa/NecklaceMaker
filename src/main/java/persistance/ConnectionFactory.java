@@ -21,9 +21,14 @@ public class ConnectionFactory {
     }
 
     static {
+        dataSource = setDataSource("/db/db.properties");
+        LOGGER.info("Datasourse is created");
+    }
+
+    public static DataSource setDataSource(String propertiesFilePath) {
         Properties properties = new Properties();
         try {
-            properties.load(MysqlDataSourceFactory.class.getResourceAsStream("/db/db.properties"));
+            properties.load(MysqlDataSourceFactory.class.getResourceAsStream(propertiesFilePath));
             MysqlDataSource mysqlDataSource = new MysqlDataSource();
             mysqlDataSource.setURL(properties.getProperty("DB_URL"));
             mysqlDataSource.setDatabaseName(properties.getProperty("DB_NAME"));
@@ -31,18 +36,18 @@ public class ConnectionFactory {
             mysqlDataSource.setUser(properties.getProperty("DB_USERNAME"));
             mysqlDataSource.setPassword(properties.getProperty("DB_PASSWORD"));
             dataSource = mysqlDataSource;
-            LOGGER.info("Datasourse is created");
         } catch (IOException | SQLException e) {
-            LOGGER.error("Datasourse error");
+            LOGGER.error(e.getMessage() + "Error while creating datasource");
         }
+        return dataSource;
     }
 
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         Connection connection = null;
         try {
             connection = dataSource.getConnection();
         } catch (SQLException e) {
-            LOGGER.error("Connection creation error"+e.getMessage());
+            LOGGER.error("Connection creation error" + e.getMessage());
         }
         return connection;
     }
